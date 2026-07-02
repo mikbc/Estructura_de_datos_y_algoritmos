@@ -60,4 +60,16 @@ while (vec[n]!= 10 && n<n1){
 
 
 // 5. Intercambiar
+
 // 6. Ordenar
+void ordenar(int vec[], int dim){
+int i, j, aux;
+for (i=0; i<n1-1; i++){
+    for ( j=i+1; j<n1; j++){
+        if ( vec[i] > vec[j]){
+            aux = vec [i];
+            vec [i] = vec [j];
+            vec [j] = aux;
+        }
+    }
+}
