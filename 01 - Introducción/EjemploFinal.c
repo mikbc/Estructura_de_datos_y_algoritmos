@@ -1,12 +1,5 @@
-// ESTRUCTURA PRINCIPAL
-#include <stdio.h>
-#include <stdlib.h>
-int main() {
-    printf("Hello world!\n");
-    return 0;
-}
+// EJEMPLO FINAL
 
-// VECTORES Y FUNCIONES
 #include <stdio.h>
 #include <stdlib.h>
 // Se declaran las funciones en el orden que se deseen ejecutar
