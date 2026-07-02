@@ -73,3 +73,16 @@ for (i=0; i<n1-1; i++){
         }
     }
 }
+
+// Insertar consecutivos (siguiente posición el acutal + 1)
+int insertarConsecutivos(int vec[], int n){
+    int i, j;
+    for(i=0; i<n; i++){
+        for(j=n; j>i+1; j--){
+            vec[j] = vec[j-1];
+        }
+        vec[i+1] = vec[i] + 1;
+        n++;
+        i++;
+    }
+}
