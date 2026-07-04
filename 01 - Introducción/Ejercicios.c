@@ -29,7 +29,7 @@ Cargar un arreglo de n posiciones con las edades de personas a las que se le rea
 Se pide:
 a) Calcular el promedio de las edades e insertarlo al comienzo del arreglo.
 b) Mostrar la edad mínima y en qué posición se encuentra esa edad.
-c) Eliminar del arreglo la edades mayores a 50 años.*/ ME QUEDÉ ACÁ!!!   /*
+c) Eliminar del arreglo la edades mayores a 50 años.
 d) Generar un nuevo arreglo con las edades pares ordenadas en sentido descendente. */
 #include <stdio.h>
 int cargar(int[]);
@@ -37,9 +37,12 @@ void mostrar(int[], int);
 int promedio(int[], int);
 int insertar(int[], int, int);
 void minima(int[], int);
+int eliminar(int[], int);
+int edadespares(int[], int, int[]);
+void ordenar(int[], int);
 
 int main() {
-    int vec[100], dim=0, prom;
+    int vec[100], dim=0, prom, vec1[100], dim1=0;
     printf("EDADES DE ENCUESTADOS:\n");
     dim = cargar(vec);
     if(dim==0){
@@ -56,6 +59,14 @@ int main() {
         // b)
         minima(vec, dim);
         // c)
+        dim=eliminar(vec,dim);
+        printf("\nEDADES MENORES A 50: |(Promedio)");
+        mostrar(vec,dim);
+        // d) 
+        dim1=edadespares(vec, dim, vec1);
+        ordenar(vec1, dim1);
+        printf("\n\nEDADES PARES: |");
+        mostrar(vec1,dim1);
     }
     return 0;
 }
@@ -115,6 +126,45 @@ void minima(int vec[], int dim){
     }
     printf("\nLa edad mínima es %d, de la posición %d del vector", min, posicion);
     return;
+}
+
+int eliminar(int vec[], int dim){
+    //Eliminar del arreglo la edades mayores a 50 años.
+    int i, j;
+    for(i=1;i<dim-1;i++){ // Empieza en 1 porque en la posición 0 está el promedio
+        if(vec[i]>50){
+            for(j=i;j<dim;j++){
+                vec[j]=vec[j+1];
+            }
+            dim--;
+            i--; // Volver a revisar la posición actual
+        }
+    }
+    return dim;
+}
+
+int edadespares(int vec[], int dim, int vec1[]){
+    int i, j=0, dim1=0;
+    // Generar un nuevo arreglo con las edades pares ordenadas en sentido descendente
+    for(i=1;i<dim;i++){
+        if(vec[i]%2==0){
+            vec1[j]=vec[i];
+            j++;
+            dim1++;
+        }
+    }
+    return dim1;
+}
+
+void ordenar(int vec1[], int dim1){
+    int i, aux=0, j;
+    for (i=0;i<dim1;i++){
+        if(vec1[i]<vec1[i+1]){
+            aux=vec1[i];
+            vec1[i]=vec1[i+1];
+            vec1[i+1]=aux;
+        }
+    }
 }
 
 /* EJERCICIO 3:
